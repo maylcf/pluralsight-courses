@@ -1,12 +1,8 @@
 package com.maylcf.bike.models;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -16,7 +12,8 @@ public class Bike {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    @Column(name = "id")
+    private Long bikeId;
 
     private String name;
     private String email;
@@ -25,16 +22,16 @@ public class Bike {
     private String serialNumber;
     private BigDecimal purchasePrice;
 
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "MM-dd-yyy")
+    //@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "MM-dd-yyy")
     private Date purchaseDate;
     private boolean contact;
 
-    public long getId() {
-        return id;
+    public Long getBikeId() {
+        return bikeId;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setBikeId(Long bikeId) {
+        this.bikeId = bikeId;
     }
 
     public String getName() {
