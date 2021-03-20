@@ -10,14 +10,14 @@ export class AdminComponent implements OnInit {
 
   public bikes;
 
-  constructor(private bugikeService: BikeService) { }
+  constructor(private bikeService: BikeService) { }
 
   ngOnInit(): void {
     this.getBikes();
   }
 
   getBikes() {
-    this.BikeService.getBikes().subscribe(
+    this.bikeService.getBikes().subscribe(
       data => {this.bikes = data},
       err => console.error(err),
       () => console.log('bikes loaded')
