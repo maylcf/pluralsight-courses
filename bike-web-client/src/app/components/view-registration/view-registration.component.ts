@@ -14,7 +14,7 @@ export class ViewRegistrationComponent implements OnInit {
   constructor(private bikeService: BikeService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.getBikes(this.route.snapshot.params.id);
+    this.getBikeReg(this.route.snapshot.params.id);
   }
 
   getBikeReg(id: number) {
