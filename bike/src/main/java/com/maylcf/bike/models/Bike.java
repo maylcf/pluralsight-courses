@@ -1,5 +1,6 @@
 package com.maylcf.bike.models;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
@@ -22,7 +23,7 @@ public class Bike {
     private String serialNumber;
     private BigDecimal purchasePrice;
 
-    //@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "MM-dd-yyy")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "MM-dd-yyy")
     private Date purchaseDate;
     private boolean contact;
 
