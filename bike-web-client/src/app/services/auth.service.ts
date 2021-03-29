@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import 'rxjs/add/operator/filter';
+import { filter } from 'rxjs/operators';
+
 import * as auth0 from 'auth0-js';
 
 @Injectable()
@@ -50,12 +51,17 @@ export class AuthService {
     // Go back to the home route
     this.router.navigate(['/']);
   }
-
+  
+  // Check whether the current time is past the
+  // access token's expiry time
   public isAuthenticated(): boolean {
-    // Check whether the current time is past the
-    // access token's expiry time
-    const expiresAt = JSON.parse(localStorage.getItem('expires_at'));
-    return new Date().getTime() < expiresAt;
+    const localInfo = localStorage.getItem('expires_at');
+    if (localInfo == null) {
+      return false
+    } else {
+      const expiresAt = JSON.parse(localInfo);
+      return new Date().getTime() < expiresAt;
+    }
   }
 
 }
