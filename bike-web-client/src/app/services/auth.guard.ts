@@ -4,13 +4,15 @@ import { AuthService } from './auth.service';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
+
   constructor(private authService: AuthService) {}
 
   canActivate() {
     if (this.authService.isAuthenticated()) {
       return true;
     } else {
-      this.authService.login()
+      this.authService.login();
+      return false;
     }
   }
 }
